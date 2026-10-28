@@ -1,0 +1,95 @@
+[
+  {
+    "name": "g-breath",
+    "slots": {"systemic": ["breath"], "scenario": "abrasion"},
+    "level": "EMERGENCY",
+    "rule": "sys.breath"
+  },
+  {
+    "name": "g-chem",
+    "slots": {"scenario": "burn", "cause": "chemical"},
+    "level": "EMERGENCY",
+    "rule": "burn.chemical"
+  },
+  {
+    "name": "g-elec",
+    "slots": {"scenario": "burn", "cause": "electric", "site": "hand"},
+    "level": "EMERGENCY",
+    "rule": "burn.electric"
+  },
+  {
+    "name": "g-face",
+    "slots": {"scenario": "burn", "cause": "flame", "site": "face"},
+    "level": "EMERGENCY",
+    "rule": "burn.face"
+  },
+  {
+    "name": "g-wide",
+    "slots": {"scenario": "burn", "cause": "heat_liquid", "site": "wide"},
+    "level": "EMERGENCY",
+    "rule": "burn.wide"
+  },
+  {
+    "name": "g-bleed",
+    "slots": {"scenario": "open_wound", "bleeding": "ongoing"},
+    "level": "EMERGENCY",
+    "rule": "bleed.ongoing"
+  },
+  {
+    "name": "g-depth",
+    "slots": {},
+    "vision": {"label": "burn", "gate_passed": true, "depth_hint": {"raw_class": "2", "score": 0.7}},
+    "level": "EMERGENCY",
+    "rule": "burn.depth"
+  },
+  {
+    "name": "g-depth-low",
+    "slots": {},
+    "vision": {"label": "burn", "gate_passed": true, "depth_hint": {"raw_class": "2", "score": 0.4}},
+    "forbid_rule": "burn.depth"
+  },
+  {
+    "name": "g-dirty",
+    "slots": {"scenario": "open_wound", "bleeding": "stopped", "dirty": "soil"},
+    "level": "WARNING",
+    "rule": "open.dirty"
+  },
+  {
+    "name": "g-late",
+    "slots": {"elapsed": "gt_72h", "red_spread": "yes", "scenario": "abrasion"},
+    "level": "WARNING",
+    "rule": "late.worry"
+  },
+  {
+    "name": "g-blister",
+    "slots": {"scenario": "burn", "cause": "flame", "site": "hand", "blister": "yes", "systemic": "none"},
+    "level": "WARNING",
+    "rule": "burn.blister"
+  },
+  {
+    "name": "g-unknown-vision",
+    "slots": {"scenario": "abrasion", "elapsed": "lt_1h", "site": "hand", "systemic": "none"},
+    "vision": {"gate_passed": false},
+    "level": "UNKNOWN",
+    "rule": "vision.unknown"
+  },
+  {
+    "name": "g-unknown-but-breath",
+    "slots": {"systemic": ["breath"], "scenario": "abrasion", "elapsed": "lt_1h", "site": "hand"},
+    "vision": {"gate_passed": false},
+    "level": "EMERGENCY",
+    "rule": "sys.breath"
+  },
+  {
+    "name": "g-observe",
+    "slots": {"scenario": "abrasion", "elapsed": "lt_1h", "site": "hand", "dirty": "clean", "systemic": "none"},
+    "level": "OBSERVATION",
+    "rule": "default.observe"
+  },
+  {
+    "name": "g-missing",
+    "slots": {"scenario": "burn"},
+    "level": null,
+    "missing": ["cause", "elapsed", "site"]
+  }
+]

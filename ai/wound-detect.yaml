@@ -1,0 +1,7 @@
+path: c:/Users/kirit/졸프/datasets/wound-detect
+train: images/train
+val: images/valid
+test: images/test
+nc: 1
+names:
+  0: wound

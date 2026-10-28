@@ -1,0 +1,126 @@
+version: "2026-10-18"
+questions:
+  - id: unsure.context
+    asks_slot: scenario
+    prompt: "지금 상태에 가장 가까운 것을 골라 주세요."
+    choices:
+      - {value: burn, label: "뜨거운 것에 덴 것 같다"}
+      - {value: open_wound, label: "살이 벌어졌다"}
+      - {value: abrasion, label: "긁히거나 쓸렸다"}
+      - {value: bruise, label: "멍이 들었다"}
+      - {value: unsure, label: "잘 모르겠다"}
+  - id: common.elapsed
+    asks_slot: elapsed
+    prompt: "언제부터인가요?"
+    choices:
+      - {value: lt_1h, label: "한 시간 안"}
+      - {value: h1_to_72, label: "한 시간에서 사흘 사이"}
+      - {value: gt_72h, label: "사흘보다 오래됨"}
+      - {value: unknown, label: "잘 모르겠다"}
+  - id: common.systemic
+    asks_slot: systemic
+    prompt: "숨쉬기 어렵거나, 갑자기 심하게 붓거나, 열이 있나요?"
+    choices:
+      - {value: breath, label: "숨쉬기 어렵다"}
+      - {value: swelling_fast, label: "갑자기 심하게 붓는다"}
+      - {value: fever, label: "열이 있다"}
+      - {value: none, label: "해당 없다"}
+      - {value: unknown, label: "잘 모르겠다"}
+  - id: burn.cause
+    asks_slot: cause
+    prompt: "뜨거운 물, 불, 화학물질, 전기 중 어디에 가깝나요?"
+    choices:
+      - {value: heat_liquid, label: "뜨거운 물·기름"}
+      - {value: flame, label: "불·뜨거운 물체"}
+      - {value: chemical, label: "화학물질"}
+      - {value: electric, label: "전기"}
+      - {value: unknown, label: "잘 모르겠다"}
+  - id: burn.site
+    asks_slot: site
+    prompt: "얼굴, 손, 관절, 넓은 범위, 그 외 중 어디에 가까운가요?"
+    choices: &site
+      - {value: face, label: "얼굴"}
+      - {value: hand, label: "손"}
+      - {value: joint, label: "관절"}
+      - {value: genitalia, label: "생식기 주변"}
+      - {value: wide, label: "손바닥보다 넓다"}
+      - {value: other, label: "그 외"}
+      - {value: unknown, label: "잘 모르겠다"}
+  - id: burn.blister
+    asks_slot: blister
+    prompt: "물집이 보이나요?"
+    choices: &yesno
+      - {value: "yes", label: "예"}
+      - {value: "no", label: "아니오"}
+      - {value: unknown, label: "잘 모르겠다"}
+  - id: burn.stuck
+    asks_slot: stuck_clothes
+    prompt: "옷이나 천이 피부에 붙어 있나요?"
+    choices: *yesno
+  - id: open.bleeding
+    asks_slot: bleeding
+    prompt: "지금 피가 멈추나요?"
+    choices:
+      - {value: stopped, label: "멈췄다"}
+      - {value: ongoing, label: "멈추지 않는다"}
+      - {value: unknown, label: "잘 모르겠다"}
+  - id: open.gape
+    asks_slot: wound_open
+    prompt: "상처가 벌어져 보이나요?"
+    choices: *yesno
+  - id: open.foreign
+    asks_slot: foreign_body
+    prompt: "이물질이 박혀 있나요?"
+    choices: *yesno
+  - id: open.dirty
+    asks_slot: dirty
+    prompt: "흙, 녹슨 금속, 동물과 관련이 있나요?"
+    choices: &dirty
+      - {value: soil, label: "흙"}
+      - {value: rust, label: "녹슨 금속"}
+      - {value: animal, label: "동물"}
+      - {value: clean, label: "해당 없다"}
+      - {value: unknown, label: "잘 모르겠다"}
+  - id: open.tetanus_memory
+    asks_slot: tetanus_memory
+    prompt: "파상풍 예방접종을 기억하시나요? 맞혔는지를 앱이 판단하지는 않습니다."
+    choices:
+      - {value: remember_yes, label: "맞은 것으로 기억한다"}
+      - {value: remember_no, label: "맞지 않은 것으로 기억한다"}
+      - {value: unknown, label: "기억나지 않는다"}
+  - id: abr.site
+    asks_slot: site
+    prompt: "어느 부위인가요?"
+    choices: *site
+  - id: abr.dirty
+    asks_slot: dirty
+    prompt: "상처에 흙이나 이물이 묻었나요?"
+    choices: *dirty
+  - id: bruise.site
+    asks_slot: site
+    prompt: "어느 부위인가요?"
+    choices: *site
+  - id: bruise.spread
+    asks_slot: red_spread
+    prompt: "붉거나 멍이 번지고 있나요?"
+    choices: *yesno
+  - id: late.spread
+    asks_slot: red_spread
+    prompt: "빨갛게 번지나요?"
+    choices: *yesno
+  - id: late.pus
+    asks_slot: pus
+    prompt: "진물이나 고름이 있나요?"
+    choices: *yesno
+  - id: late.pain
+    asks_slot: pain_trend
+    prompt: "통증은 어떤가요?"
+    choices:
+      - {value: up, label: "심해진다"}
+      - {value: same, label: "비슷하다"}
+      - {value: down, label: "줄어든다"}
+      - {value: unknown, label: "잘 모르겠다"}
+  - id: common.finish_confirm
+    asks_slot: null
+    prompt: "더 이야기할 내용이 없으면 여기까지 정리하겠습니다."
+    choices: []

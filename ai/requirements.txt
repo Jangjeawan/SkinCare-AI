@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-multipart
+pyyaml
+pillow
+numpy
+opencv-python-headless
+torch
+torchvision
+ultralytics

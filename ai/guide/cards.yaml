@@ -1,0 +1,60 @@
+version: "2026-10-20"
+cards:
+  - id: card.burn.heat
+    title: "화상"
+    body: "화상부위를 흐르는 찬물 속에 넣어 적어도 10분 동안 담가야 합니다. 상처부위는 깨끗하고 가능하면 멸균 처리된 보푸라기가 없는 거즈로 덮어야 합니다. 얼굴에 난 화상은 환자가 숨을 쉴 수 있도록 구멍을 낸 거즈를 덮습니다. 물집은 터뜨리지 말고, 화상부위에 딱 붙어 있는 물질들은 떼어내지 맙시다. 로션을 바르거나 연고, 기름 같은 것도 바르지 맙시다. 환자를 빨리 병원으로 옮겨야 합니다."
+    source: "국민재난안전포털"
+    source_url: "https://www.safekorea.go.kr/idsiSFK/sfk/cs/sfc/lifeTrick.do"
+    when: {scenario: burn, cause_in: [heat_liquid, flame, unknown], level_in: [OBSERVATION, WARNING, EMERGENCY]}
+    avoid: [ice_direct, toothpaste, oil, soy_paste, pop_blister]
+  - id: card.burn.chemical
+    title: "화학화상 응급처치"
+    body: "환자를 안전한곳으로 옮기고 화상이 더 진행되지 않도록 조치한다. 화학물질이 액체가 아닌 고형 물질이라면 물로 씻기 전에 먼저 털어낸다. 약품이 묻은 의류와 신발등은 즉시 제거하고, 화학약품이 전부 제거될 때까지 흐르는 물로 계속 씻는다. 이때 씻는 것이 부족할 때에는 깊은 상처가 될 수도 있다."
+    source: "중앙응급의료센터"
+    source_url: "https://www.e-gen.or.kr/egen/heat_iced_damage.do?contentsno=38"
+    when: {any: [{cause: chemical}, {rule: burn.chemical}]}
+    avoid: []
+    replaces: [card.burn.heat]
+  - id: card.burn.electric
+    title: "치료"
+    body: "전기로 인한 화상의 경우 함부로 환자를 직접 떼어내지 말고 일단 전기 스위치를 내려 전기 공급을 차단해야 합니다. 전기 화상은 겉으로 보이는 상처보다 심한 내부 장기 손상을 흔히 동반하므로 빠르게 병원을 방문하는 것이 필요합니다."
+    source: "질병관리청 국가건강정보포털"
+    source_url: "https://health.kdca.go.kr/healthinfo/biz/health/gnrlzHealthInfo/gnrlzHealthInfo/gnrlzHealthInfoView.do?cntnts_sn=6584"
+    when: {cause: electric}
+    avoid: []
+    replaces: [card.burn.heat]
+  - id: card.bleed
+    title: "지혈"
+    body: "열상이 생기면 대부분 출혈이 동반됩니다. 가장 먼저 해야 할 일은 출혈이 멈추도록 지혈하는 것입니다. 이후 깨끗한 수건이나 거즈를 이용하여 열상부위를 직접 압박하도록 합니다. 지혈을 위해 열상부위에 시중에서 쉽게 구할 수 있는 연고나 분말형 약제를 바르는 것은 지혈에 도움이 되지 않으며, 도리어 상처의 분비물 배출과 오염물질을 제거하는데 방해가 될 수 있습니다."
+    source: "질병관리청 국가건강정보포털"
+    source_url: "https://health.kdca.go.kr/healthinfo/biz/health/gnrlzHealthInfo/gnrlzHealthInfo/gnrlzHealthInfoView.do?cntnts_sn=5679"
+    when: {rule: bleed.ongoing}
+    avoid: []
+  - id: card.open.cover
+    title: "초기 응급처치"
+    body: "열상, 찰과상: 흐르는 깨끗한 물로 세척 후 깨끗한 거즈로 압박하여 지혈합니다. 오염된 상처는 흐르는 깨끗한 물이나 생리식염수로 충분히 세척하여 이물질과 오염원을 제거하는 것이 가장 중요합니다."
+    source: "질병관리청 국가건강정보포털"
+    source_url: "https://health.kdca.go.kr/healthinfo/biz/health/gnrlzHealthInfo/gnrlzHealthInfo/gnrlzHealthInfoView.do?cntnts_sn=5696"
+    when: {scenario: open_wound, level_not: EMERGENCY}
+    avoid: [toothpaste, soil_fill]
+  - id: card.late
+    title: "병원을 방문해야 하는 경우"
+    body: "다음과 같은 경우에는 즉시 병원을 방문하세요. 출혈이 멈추지 않는 경우. 신경 손상이 의심되는 경우. 깊은 열상이나 자상 및 심각한 상처라고 판단되는 경우. 상처 부위가 오염되거나 감염된 경우. 1주 이상 치유되지 않는 경우."
+    source: "질병관리청 국가건강정보포털"
+    source_url: "https://health.kdca.go.kr/healthinfo/biz/health/gnrlzHealthInfo/gnrlzHealthInfo/gnrlzHealthInfoView.do?cntnts_sn=5696"
+    when: {rule: late.worry}
+    avoid: []
+  - id: card.observe.clean
+    title: "초기 응급처치"
+    body: "열상, 찰과상: 흐르는 깨끗한 물로 세척 후 깨끗한 거즈로 압박하여 지혈합니다. 타박상: 처음 48시간 동안 얼음주머니로 냉찜질한 후 온찜질을 하면 멍이 빨리 사라지는 데 도움이 됩니다."
+    source: "질병관리청 국가건강정보포털"
+    source_url: "https://health.kdca.go.kr/healthinfo/biz/health/gnrlzHealthInfo/gnrlzHealthInfo/gnrlzHealthInfoView.do?cntnts_sn=5696"
+    when: {level: OBSERVATION, scenario_in: [abrasion, bruise]}
+    avoid: [toothpaste, soy_paste, oil, ice_direct, pop_blister, soil_fill]
+  - id: card.unknown
+    title: "병원을 방문해야 하는 경우"
+    body: "만약 감염이 의심되거나, 상처가 깊다면 반드시 빠르게 의료진의 도움을 받는 것이 가장 안전한 방법입니다."
+    source: "질병관리청 국가건강정보포털"
+    source_url: "https://health.kdca.go.kr/healthinfo/biz/health/gnrlzHealthInfo/gnrlzHealthInfo/gnrlzHealthInfoView.do?cntnts_sn=5696"
+    when: {level: UNKNOWN}
+    avoid: []

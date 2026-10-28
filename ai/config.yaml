@@ -1,0 +1,19 @@
+quality:
+  min_side: 256
+  luma_low: 40
+  luma_high: 220
+  blur_var: 80
+  flat_std: 8
+
+detect:
+  conf: 0.25
+  iou: 0.5
+  max_det: 10
+
+gate:
+  top1: 0.65
+  margin: 0.15
+  det_conf: 0.35
+  min_area: 0.02
+  crop_pad: 0.15
+  min_crop_px: 32

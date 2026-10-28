@@ -1,0 +1,17 @@
+version: "2026-10-18"
+rules:
+  - {id: sys.breath, priority: 1, level: EMERGENCY, when: {systemic_has: breath}}
+  - {id: sys.swelling, priority: 2, level: EMERGENCY, when: {systemic_has: swelling_fast}}
+  - {id: burn.chemical, priority: 3, level: EMERGENCY, when: {scenario: burn, cause: chemical}}
+  - {id: burn.electric, priority: 4, level: EMERGENCY, when: {scenario: burn, cause: electric}}
+  - {id: burn.face, priority: 5, level: EMERGENCY, when: {scenario: burn, site: face}}
+  - {id: burn.genitalia, priority: 6, level: EMERGENCY, when: {scenario: burn, site: genitalia}}
+  - {id: burn.wide, priority: 7, level: EMERGENCY, when: {scenario: burn, site: wide}}
+  - {id: bleed.ongoing, priority: 8, level: EMERGENCY, when: {bleeding: ongoing}}
+  - {id: burn.depth, priority: 9, level: EMERGENCY, when: {vision_label: burn, gate_passed: true, depth_class: "2", depth_score_gte: 0.65}}
+  - {id: open.gape, priority: 10, level: WARNING, when: {scenario: open_wound, wound_open: "yes"}}
+  - {id: open.foreign, priority: 11, level: WARNING, when: {foreign_body: "yes"}}
+  - {id: open.dirty, priority: 12, level: WARNING, when: {dirty_in: [soil, rust, animal]}}
+  - {id: late.worry, priority: 13, level: WARNING, when: {elapsed: gt_72h, any: [{red_spread: "yes"}, {pus: "yes"}, {pain_trend: up}, {systemic_has: fever}]}}
+  - {id: burn.blister, priority: 14, level: WARNING, when: {scenario: burn, blister: "yes"}}
+  - {id: burn.stuck, priority: 15, level: WARNING, when: {stuck_clothes: "yes"}}
