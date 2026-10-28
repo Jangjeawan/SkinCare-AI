@@ -65,6 +65,8 @@ dependencies {
 
     // Source: https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+
+    implementation 'me.paulschwarz:spring-dotenv:4.0.0'
 }
 
 tasks.named('test') {

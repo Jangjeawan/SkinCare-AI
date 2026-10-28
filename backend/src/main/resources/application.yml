@@ -28,9 +28,9 @@ spring:
           google:
             client-id: ${GOOGLE_CLIENT_ID}
             client-secret: ${GOOGLE_SECRET}
-          scope:
-            - email
-            - profile
+            scope:
+              - email
+              - profile
 
   mail:
     host: smtp.gmail.com
